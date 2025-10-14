@@ -1,0 +1,1156 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9ineskulls</title>
+    <link rel="icon" type="image/png" href="images/icon.png">
+    
+    <meta property="og:title" content="9ineskulls.dev">
+    <meta property="og:description" content="The official 9ineskulls website">
+    <meta property="og:image" content="images/embed.jpg">
+    <meta property="og:type" content="website">
+    
+    <meta name="theme-color" content="#f1ecc4">
+    <meta name="description" content="The official 9ineskulls website">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+body {
+    overflow: hidden;
+}
+
+.portfoliopage {
+    overflow-y: auto;
+    max-height: 100vh;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.portfoliopage::-webkit-scrollbar {
+    display: none;
+}
+
+::selection {
+    background-color: #f1ecc4;
+    color: #0a0a0a;
+}
+
+::-moz-selection {
+    background-color: #f1ecc4;
+    color: #0a0a0a;
+}
+
+.entrance {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 9999;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.entrancetext {
+    font-size: 1.75rem;
+    color: #f1ecc4;
+    padding: 1.25rem 2.5rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fadeout {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.audiocontrol {
+    position: fixed;
+    top: 2rem;
+    left: 1rem;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(1rem);
+    border: 1px solid #262626;
+    border-radius: 9999px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    width: 3.25rem;
+    height: 3.25rem;
+}
+
+.audiocontrol:hover {
+    width: 13.75rem;
+}
+
+.audioicon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f1ecc4;
+    width: 3.25rem;
+    height: 3.25rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.audioslider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem 0 0.5rem;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 10.5rem;
+    height: 3.25rem;
+    transform: translateX(-0.625rem);
+}
+
+.audiocontrol:hover .audioslider {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.volumeinput {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 0.375rem;
+    background: #262626;
+    border-radius: 0.1875rem;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.volumeinput::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0.875rem;
+    height: 0.875rem;
+    background: #f1ecc4;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.volumeinput::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 0.25rem rgba(241, 236, 196, 0.2);
+}
+
+.volumeinput::-moz-range-thumb {
+    width: 0.875rem;
+    height: 0.875rem;
+    background: #f1ecc4;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.volumeinput::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 0.25rem rgba(241, 236, 196, 0.2);
+}
+
+.wavebar {
+    width: 0.1875rem;
+    background-color: #f1ecc4;
+    border-radius: 0.125rem;
+    margin: 0 0.0625rem;
+    animation: waveanimation 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+.wavebar:nth-child(1) { height: 0.5rem; animation-delay: 0s; }
+.wavebar:nth-child(2) { height: 0.75rem; animation-delay: 0.1s; }
+.wavebar:nth-child(3) { height: 0.4375rem; animation-delay: 0.2s; }
+.wavebar:nth-child(4) { height: 0.875rem; animation-delay: 0.3s; }
+.wavebar:nth-child(5) { height: 0.625rem; animation-delay: 0.4s; }
+
+@keyframes waveanimation {
+    0%, 100% { 
+        transform: scaleY(0.3); 
+        opacity: 0.7; 
+    }
+    50% { 
+        transform: scaleY(1); 
+        opacity: 1; 
+    }
+}
+
+.page { 
+    display: none; 
+    opacity: 0;
+    transform: translateY(0.9375rem);
+}
+
+.page.active { 
+    display: block; 
+    opacity: 1;
+    transform: translateY(0);
+    animation: fade 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.homenotready .animate-slide {
+    opacity: 0;
+    transform: scale(0.96) translateY(1.25rem);
+    animation: none;
+}
+
+.navitem {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #f1ecc4;
+}
+
+.navitem.active {
+    color: #0a0a0a;
+}
+
+#indicator {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background-color: #f1ecc4;
+}
+
+.boxanimation {
+    opacity: 0;
+    transform: translateY(1.875rem) scale(0.95);
+    animation: box 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.boxanimation:nth-child(1) { animation-delay: 0s; }
+.boxanimation:nth-child(2) { animation-delay: 0.1s; }
+.boxanimation:nth-child(3) { animation-delay: 0.2s; }
+
+@keyframes box {
+    0% { 
+        opacity: 0; 
+        transform: translateY(1.875rem) scale(0.95); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+    }
+}
+
+.hoverliftbox {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hoverliftbox:hover {
+    transform: translateY(-0.125rem) scale(1.01);
+}
+
+.contacthoverbox {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contacthoverbox:hover {
+    transform: translateY(-0.0625rem) scale(1.005);
+}
+
+.timelineline {
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    animation: linegrow 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.2s;
+    left: 1rem;
+}
+
+@keyframes linegrow {
+    0% { 
+        opacity: 0; 
+        transform: scaleY(0) translateY(-2.5rem);
+    }
+    100% { 
+        opacity: 1; 
+        transform: scaleY(1) translateY(-2.5rem);
+    }
+}
+
+.timelineitem {
+    opacity: 0;
+    transform: translateX(1.875rem) scale(0.9);
+    animation: itemslide 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.timelineitem:nth-child(1) { animation-delay: 0.4s; }
+.timelineitem:nth-child(2) { animation-delay: 0.6s; }
+.timelineitem:nth-child(3) { animation-delay: 0.8s; }
+
+@keyframes itemslide {
+    0% { 
+        opacity: 0; 
+        transform: translateX(1.875rem) scale(0.9);
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateX(0) scale(1);
+    }
+}
+
+.timelinedot {
+    position: absolute;
+    left: 0.625rem;
+    top: 1rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #f1ecc4;
+    border-radius: 50%;
+    opacity: 0;
+    animation: dotpop 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+}
+
+.timelineitem:nth-child(1) .timelinedot { animation-delay: 0.5s; }
+.timelineitem:nth-child(2) .timelinedot { animation-delay: 0.7s; }
+.timelineitem:nth-child(3) .timelinedot { animation-delay: 0.9s; }
+
+@keyframes dotpop {
+    0% { 
+        transform: scale(0) rotate(0deg); 
+        opacity: 0; 
+    }
+    50% { 
+        transform: scale(1.4) rotate(180deg); 
+        opacity: 0.8; 
+    }
+    100% { 
+        transform: scale(1) rotate(360deg); 
+        opacity: 1; 
+    }
+}
+
+.contactitem {
+    opacity: 0;
+    transform: translateY(1.25rem) scale(0.95);
+    animation: box 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.contactitem:nth-child(1) { animation-delay: 0.1s; }
+.contactitem:nth-child(2) { animation-delay: 0.2s; }
+.contactitem:nth-child(3) { animation-delay: 0.3s; }
+
+.skillcontainer {
+    position: relative;
+    overflow: hidden;
+    background: #18181b;
+    border-radius: 9999px;
+}
+
+.skillfill {
+    height: 100%;
+    background: #f1ecc4;
+    border-radius: inherit;
+    transform: translateX(-100%);
+    animation: skillfill 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes skillfill {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}
+
+@media (max-width: 1024px) {
+    body {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    
+    .timelinedot {
+        left: 0.625rem;
+        top: 1.25rem;
+    }
+    
+    .timelineline {
+        left: 1rem;
+    }
+    
+    .audiocontrol {
+        position: fixed;
+        top: 5.5rem;
+        left: 50%;
+        transform: translateX(-50%) scale(0.9);
+        width: 3rem;
+        height: 3rem;
+        z-index: 45;
+    }
+    
+    .audiocontrol:hover {
+        width: 12.5rem;
+    }
+    
+    .audioicon {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .audioslider {
+        width: 9.5rem;
+        height: 3rem;
+    }
+    
+    nav {
+        position: fixed;
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%) scale(0.95);
+        width: auto;
+        min-width: fit-content;
+        max-width: 85vw;
+        z-index: 50;
+    }
+}
+
+@media (max-width: 768px) {
+    .entrancetext {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+    }
+    
+    nav {
+        top: 1rem;
+        transform: translateX(-50%) scale(0.85);
+        padding: 0.1875rem;
+        max-width: 90vw;
+    }
+    
+    .navitem {
+        padding: 0.5rem 0.875rem;
+        font-size: 0.8125rem;
+        white-space: nowrap;
+    }
+    
+    .audiocontrol {
+        top: 5.125rem;
+        transform: translateX(-50%) scale(0.85);
+    }
+    
+    .volumeinput::-webkit-slider-thumb {
+        width: 0.75rem;
+        height: 0.75rem;
+    }
+    
+    .volumeinput::-moz-range-thumb {
+        width: 0.75rem;
+        height: 0.75rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .timelineitem {
+        margin-left: -0.375rem;
+    }
+    
+    .timelinedot {
+        left: 1rem;
+    }
+    
+    .timelineline {
+        left: 1.375rem;
+    }
+    
+    nav {
+        transform: translateX(-50%) scale(0.75);
+        max-width: 95vw;
+    }
+    
+    .navitem {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .audiocontrol {
+        top: 4.875rem;
+        transform: translateX(-50%) scale(0.8);
+    }
+    
+    nav {
+        transform: translateX(-50%) scale(0.7);
+    }
+    
+    .navitem {
+        padding: 0.3125rem 0.625rem;
+        font-size: 0.6875rem;
+    }
+}
+
+@media (min-width: 1025px) {
+    body {
+        overflow: hidden;
+    }
+    
+    .portfoliopage {
+        overflow-y: auto;
+    }
+    
+    .audiocontrol {
+        z-index: 50;
+    }
+}
+</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'sans': ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        'b1': '#f1ecc4',
+                        'b2': '#1a1a1a',
+                        'c1': '#22c55e',
+                        'c2': '#000000',
+                        'd1': '#0a0a0a',
+                        'd2': '#d4d4d8',
+                        'd3': '#a3a3a3',
+                        'd4': '#18181b'
+                    },
+                    animation: {
+                        'slide': 'slide 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'fade': 'fade 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'box': 'box 0.7s cubic-bezier(0.16, 1, 0.3, 1) both'
+                    },
+                    keyframes: {
+                        slide: {
+                            '0%': {
+                                transform: 'scale(0.96) translateY(1.25rem)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'scale(1) translateY(0)',
+                                opacity: '1'
+                            }
+                        },
+                        fade: {
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateY(0.9375rem)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0)'
+                            }
+                        },
+                        box: {
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateY(1.875rem) scale(0.95)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0) scale(1)'
+                            }
+                        }
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-c2 text-b1 font-montserrat min-h-screen">
+    <div class="entrance" id="entrance">
+        <div class="entrancetext">Click to Enter</div>
+    </div>
+    
+    <audio id="player" loop="">
+        <source src="media/audio.flac" type="audio/flac">
+    </audio>
+    
+    <div id="control" class="audiocontrol">
+        <div class="audioicon" id="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12zm3.025 4a4.5 4.5 0 0 1-1.318 3.182L10 10.475A3.5 3.5 0 0 0 11.025 8 3.5 3.5 0 0 0 10 5.525l.707-.707A4.5 4.5 0 0 1 12.025 8"></path>
+            </svg>
+        </div>
+        <div class="audioslider">
+            <input type="range" id="slider" min="0" max="100" value="50" class="volumeinput">
+        </div>
+    </div>
+    
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-c2/80 backdrop-blur-lg border border-b2 rounded-full px-4 py-2 flex justify-center md:top-6">
+        <div class="flex items-center gap-3 relative">
+            <div id="indicator" class="absolute bg-b1 rounded-full transition-all duration-300 ease-out opacity-100 -z-10"></div>
+            <div class="navitem px-6 py-2.5 rounded-full cursor-pointer text-sm font-medium relative transition-all duration-300 ease-out select-none active" data-page="home">Home</div>
+            <div class="navitem px-6 py-2.5 rounded-full cursor-pointer text-sm font-medium relative transition-all duration-300 ease-out select-none" data-page="portfolio">Portfolio</div>
+            <div class="navitem px-6 py-2.5 rounded-full cursor-pointer text-sm font-medium relative transition-all duration-300 ease-out select-none" data-page="contact">Contact</div>
+        </div>
+    </nav>
+    
+    <main id="home" class="page active homenotready">
+        <div class="flex flex-col items-center justify-center px-4 sm:px-6 min-h-screen pt-20">
+            <div class="w-full max-w-xl space-y-5">
+                <section class="bg-d1/80 border border-b2 shadow-2xl rounded-xl p-6 sm:p-8 text-center animate-slide">
+                    <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 sm:mb-6 shadow-lg mx-auto pointer-events-none">
+                        <img src="images/profilepicture.jpg" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                    <h1 class="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-b1">9ineskulls</h1>
+                    <p class="text-d2 text-sm sm:text-base mb-6 sm:mb-8 max-w-sm mx-auto">Web, Script & Software Developer</p>
+                    <div class="flex justify-center gap-2 flex-wrap">
+                        <a href="https://www.roblox.com/users/4140011785/profile" target="_blank" class="text-b1/70 hover:text-b1 transition-all duration-300 ease-out p-2 sm:p-3 hover:-translate-y-1 hover:scale-110 transform">
+                            <svg class="w-6 h-6 sm:w-8 sm:h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                <path d="M18.926 23.998 0 18.892 5.075.002 24 5.108ZM15.348 10.09l-5.282-1.453-1.414 5.273 5.282 1.453z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://pinterest.com/9ineskulls/" target="_blank" class="text-b1/70 hover:text-b1 transition-all duration-300 ease-out p-2 sm:p-3 hover:-translate-y-1 hover:scale-110 transform">
+                            <svg class="w-6 h-6 sm:w-8 sm:h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/9ineskulls" target="_blank" class="text-b1/70 hover:text-b1 transition-all duration-300 ease-out p-2 sm:p-3 hover:-translate-y-1 hover:scale-110 transform">
+                            <svg class="w-6 h-6 sm:w-8 sm:h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+                            </svg>
+                        </a>
+                        <a href="https://last.fm/user/Nineskulls" target="_blank" class="text-b1/70 hover:text-b1 transition-all duration-300 ease-out p-2 sm:p-3 hover:-translate-y-1 hover:scale-110 transform">
+                            <svg class="w-6 h-6 sm:w-8 sm:h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                <path d="M10.584 17.21l-.88-2.392s-1.43 1.594-3.573 1.594c-1.897 0-3.244-1.649-3.244-4.288 0-3.382 1.704-4.591 3.381-4.591 2.42 0 3.189 1.567 3.849 3.574l.88 2.749c.88 2.666 2.529 4.81 7.285 4.81 3.409 0 5.718-1.044 5.718-3.793 0-2.227-1.265-3.381-3.63-3.931l-1.758-.385c-1.21-.275-1.567-.77-1.567-1.595 0-.934.742-1.484 1.952-1.484 1.32 0 2.034.495 2.144 1.677l2.749-.33c-.22-2.474-1.924-3.492-4.729-3.492-2.474 0-4.893.935-4.893 3.932 0 1.87.907 3.051 3.189 3.601l1.87.44c1.402.33 1.869.907 1.869 1.704 0 1.017-.99 1.43-2.86 1.43-2.776 0-3.93-1.457-4.59-3.464l-.907-2.75c-1.155-3.573-2.997-4.893-6.653-4.893C2.144 5.333 0 7.89 0 12.233c0 4.18 2.144 6.434 5.993 6.434 3.106 0 4.591-1.457 4.591-1.457z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://discord.com/users/1160463288002428948" target="_blank" class="text-b1/70 hover:text-b1 transition-all duration-300 ease-out p-2 sm:p-3 hover:-translate-y-1 hover:scale-110 transform">
+                            <svg class="w-6 h-6 sm:w-8 sm:h-8" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.419-2.1568 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </section>
+                <section class="bg-d1/80 border border-b2 rounded-lg shadow-2xl p-4 sm:p-5 animate-slide relative">
+                    <div class="absolute -top-3 right-2">
+                        <svg viewBox="0 -190.5 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" class="w-12 h-12 sm:w-16 sm:h-16">
+                            <g fill="#1a1a1a">
+                                <path d="M114.409975,120.16185 L108.377185,103.763408 C108.377185,103.763408 98.5740818,114.696666 83.8733992,114.696666 C70.8654217,114.696666 61.6292017,103.386449 61.6292017,85.2895233 C61.6292017,62.1043724 73.3149337,53.8105501 84.8150748,53.8105501 C101.401997,53.8105501 106.680147,64.5553286 111.204378,78.31578 L117.237168,97.1659013 C123.267791,115.449862 134.578008,130.151989 167.187859,130.151989 C190.563656,130.151989 206.397382,122.989766 206.397382,104.141089 C206.397382,88.872079 197.724434,80.9544937 181.513749,77.1841805 L169.450336,74.5454669 C161.157236,72.6606714 158.707001,69.2673173 158.707001,63.6122087 C158.707001,57.2031819 163.795227,53.433591 172.090494,53.433591 C181.138234,53.433591 186.038702,56.826945 186.793343,64.9322877 L205.642742,62.669811 C204.134906,45.7052073 192.448451,38.7307419 173.220649,38.7307419 C156.256767,38.7307419 139.668401,45.1397687 139.668401,65.6862059 C139.668401,78.5042595 145.888948,86.6103244 161.53275,90.3799154 L174.35297,93.3955882 C183.96615,95.6580649 187.168858,99.6161354 187.168858,105.082764 C187.168858,112.055786 180.383594,114.883701 167.56554,114.883701 C148.526939,114.883701 140.610798,104.893563 136.085845,91.1331114 L129.865298,72.2844344 C121.949879,47.7792045 109.319583,38.7307419 84.2481918,38.7307419 C56.5395317,38.7307419 41.8359605,56.2607842 41.8359605,86.0434415 C41.8359605,114.696666 56.5395317,130.151989 82.9302793,130.151989 C104.22919,130.151989 114.409975,120.16185 114.409975,120.16185"></path>
+                                <path d="M33.7428942,111.301867 C31.8573766,111.868028 29.9725811,112.244265 27.522347,112.244265 C22.9981157,112.244265 19.7932412,110.171712 19.7932412,104.703639 L19.7932412,1.96784203 L0,1.96784203 L0,109.417072 C0,123.554482 9.80310296,129.400237 21.3010776,129.400237 C25.0713907,129.400237 28.6532243,128.833354 33.1774556,127.703921 L33.7428942,111.301867"></path>
+                                <path d="M272.183966,108.286195 C267.282776,111.680993 263.136226,113.378031 257.481117,113.378031 C250.31745,113.378031 246.358657,109.607718 246.358657,100.370776 L246.358657,56.2578956 L272.373168,56.2578956 L272.373168,40.8018505 L246.547137,40.8018505 L246.547137,19.8762877 L226.566138,22.327244 L226.566138,40.8018505 L213.93512,40.8018505 L213.93512,56.2578956 L226.566138,56.2578956 L226.566138,104.515882 C226.566138,121.861777 236.556276,130.151989 252.767684,130.151989 C261.627667,130.151989 269.545252,128.457839 275.7658,124.876728 L272.183966,108.286195"></path>
+                                <path d="M289.376045,115.071458 C289.376045,122.802008 295.408835,129.022556 303.136496,129.022556 C311.243283,129.022556 317.275351,122.802008 317.275351,115.071458 C317.275351,107.154595 311.243283,101.124694 303.136496,101.124694 C295.408835,101.124694 289.376045,107.154595 289.376045,115.071458"></path>
+                                <path d="M337.766183,56.2578956 L337.766183,127.890956 L357.559425,127.890956 L357.559425,56.2578956 L379.8029,56.2578956 L379.8029,40.8018505 L357.559425,40.8018505 L357.559425,32.883543 C357.559425,21.0086093 362.649817,17.2390183 370.943639,17.2390183 C376.787227,17.2390183 380.74602,18.5569309 385.270251,21.0086093 L388.473681,4.41879831 C383.196976,1.96784203 376.975707,0.64848519 369.435803,0.64848519 C352.845992,0.64848519 337.766183,8.56534838 337.766183,32.1289027 L337.766183,40.8018505 L325.135887,40.8018505 L325.135887,56.2578956 L337.766183,56.2578956"></path>
+                                <path d="M458.672564,57.956378 C456.410087,43.8182454 447.173867,38.726409 435.10901,38.726409 C423.044874,38.726409 412.677777,44.1937602 408.152102,57.5772525 L405.70259,40.8018505 L389.678939,40.8018505 L389.678939,127.890956 L409.472181,127.890956 L409.472181,78.6920169 C409.472181,61.9130042 418.143684,55.5039774 427.380626,55.5039774 C436.994528,55.5039774 440.95332,61.9130042 440.95332,72.2815458 L440.95332,127.890956 L460.558082,127.890956 L460.558082,78.5035374 C460.558082,61.9130042 469.417343,55.5039774 478.655007,55.5039774 C488.080429,55.5039774 492.037777,61.9130042 492.037777,72.2815458 L492.037777,127.890956 L511.83174,127.890956 L511.83174,65.3085247 C511.83174,46.6461608 500.898482,38.726409 486.382669,38.726409 C474.131498,38.726409 463.196795,44.1937602 458.672564,57.956378"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div id="musicdisplay">
+                        <div class="flex items-center gap-3 py-2">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-d4 border border-b2 rounded-lg flex-shrink-0 overflow-hidden animate-pulse"></div>
+                            <div class="flex-1 min-w-0">
+                                <div class="h-4 bg-d4 border border-b2 rounded-md mb-2 animate-pulse"></div>
+                                <div class="h-3 bg-d4 border border-b2 rounded-md w-3/5 animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <main id="portfolio" class="page portfoliopage">
+        <div class="flex flex-col items-center justify-center px-4 sm:px-6 min-h-screen pt-24 pb-8">
+            <div class="w-full max-w-7xl">
+                <article class="bg-d1/80 border border-b2 rounded-xl shadow-2xl p-4 sm:p-6 lg:p-8 animate-slide">
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
+                        <section class="bg-d1/40 border border-b2 rounded-lg p-4 sm:p-6 lg:p-8 boxanimation hoverliftbox">
+                            <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                                <div class="w-16 h-16 sm:w-18 sm:h-18 bg-b1 text-d1 rounded-md flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-7 h-7 sm:w-8 sm:h-8">
+                                        <path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 6v-.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2v.8q0 .825-.587 1.413T18 20H6q-.825 0-1.412-.587T4 18"></path>
+                                    </svg>
+                                </div>
+                                <h2 class="text-b1 text-xl sm:text-2xl font-semibold">About Me</h2>
+                            </div>
+                            <div class="space-y-2 sm:space-y-3">
+                                <p class="text-d2 text-sm sm:text-base leading-relaxed">
+                                    <span class="text-b1 font-medium">Name:</span>
+                                    Joey
+                                </p>
+                                <p class="text-d2 text-sm sm:text-base leading-relaxed">
+                                    <span class="text-b1 font-medium">Age:</span>
+                                    20 years old
+                                </p>
+                                <p class="text-d2 text-sm sm:text-base leading-relaxed">
+                                    <span class="text-b1 font-medium">Experience:</span>
+                                    7+ Years
+                                </p>
+                                <p class="text-d2 text-sm sm:text-base leading-relaxed">
+                                    <span class="text-b1 font-medium">Location:</span>
+                                    United Kingdom
+                                </p>
+                                <p class="text-d2 text-sm sm:text-base leading-relaxed">
+                                    <span class="text-b1 font-medium">Languages:</span>
+                                    English, Russian, Swedish
+                                </p>
+                                <p class="text-d2 text-sm sm:text-base leading-relaxed">
+                                    <span class="text-b1 font-medium">Interests:</span>
+                                    Music, Fashion, Technology, Coding
+                                </p>
+                            </div>
+                        </section>
+                        <section class="bg-d1/40 border border-b2 rounded-lg p-4 sm:p-6 lg:p-8 boxanimation hoverliftbox">
+                            <div class="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                                <div class="w-16 h-16 sm:w-18 sm:h-18 bg-b1 text-d1 rounded-md flex items-center justify-center flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-7 h-7 sm:w-8 sm:h-8">
+                                        <path fill="currentColor" d="M4.825 12.025L8.7 15.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-4.6-4.6q-.15-.15-.213-.325T2.426 12t.063-.375t.212-.325l4.6-4.6q.3-.3.713-.3t.712.3t.3.713t-.3.712zm14.35-.05L15.3 8.1q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.6 4.6q-.3.3-.7.288t-.7-.313t-.3-.712t.3-.713z"></path>
+                                    </svg>
+                                </div>
+                                <h2 class="text-b1 text-xl sm:text-2xl font-semibold">Skills</h2>
+                            </div>
+                            <div class="space-y-4 sm:space-y-6">
+                                <div class="space-y-2 sm:space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-b1 text-sm sm:text-base font-medium">Web development</span>
+                                        <span class="text-d2 text-xs sm:text-sm">95%</span>
+                                    </div>
+                                    <div class="w-full bg-d4 rounded-full h-2.5 skillcontainer">
+                                        <div class="skillfill w-[95%]"></div>
+                                    </div>
+                                </div>
+                                <div class="space-y-2 sm:space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-b1 text-sm sm:text-base font-medium">Script development</span>
+                                        <span class="text-d2 text-xs sm:text-sm">90%</span>
+                                    </div>
+                                    <div class="w-full bg-d4 rounded-full h-2.5 skillcontainer">
+                                        <div class="skillfill w-[90%]"></div>
+                                    </div>
+                                </div>
+                                <div class="space-y-2 sm:space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-b1 text-sm sm:text-base font-medium">Software development</span>
+                                        <span class="text-d2 text-xs sm:text-sm">70%</span>
+                                    </div>
+                                    <div class="w-full bg-d4 rounded-full h-2.5 skillcontainer">
+                                        <div class="skillfill w-[70%]"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <section class="bg-d1/40 border border-b2 rounded-lg p-4 sm:p-6 lg:p-8 boxanimation hoverliftbox">
+                        <div class="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                            <div class="w-16 h-16 sm:w-18 sm:h-18 bg-b1 text-d1 rounded-md flex items-center justify-center flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-7 h-7 sm:w-8 sm:h-8">
+                                    <path fill="currentColor" d="M19 19H8q-.825 0-1.412-.587T6 17V3q0-.825.588-1.412T8 1h6.175q.4 0 .763.15t.637.425l4.85 4.85q.275.275.425.638t.15.762V17q0 .825-.587 1.413T19 19m0-11l-5-5v3.5q0 .625.438 1.063T15.5 8zM4 23q-.825 0-1.412-.587T2 21V8q0-.425.288-.712T3 7t.713.288T4 8v13h10q.425 0 .713.288T15 22t-.288.713T14 23z"></path>
+                                </svg>
+                            </div>
+                            <h2 class="text-b1 text-xl sm:text-2xl font-semibold">Experience</h2>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute top-6 sm:top-8 bottom-0 w-px bg-b2 timelineline"></div>
+                            <div class="space-y-6 sm:space-y-8">
+                                <article class="relative timelineitem">
+                                    <div class="timelinedot"></div>
+                                    <div class="ml-10 sm:ml-16 -mt-1">
+                                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                                            <h3 class="text-b1 font-semibold text-base sm:text-lg">Novaline Executor</h3>
+                                            <span class="text-xs sm:text-sm text-d2 bg-d4 px-2 sm:px-3 py-1 rounded-full w-fit">2022 - 2023</span>
+                                        </div>
+                                        <p class="text-d2 text-sm sm:text-base leading-relaxed">Novaline Executor was a free Roblox executor that was part of WeAreDevs, designed to support high level scripts. Although its user base was relatively small, it was a stable and well built executor. I contributed significantly to both the build and Lua aspects, and overall, it was a rewarding and memorable project.</p>
+                                    </div>
+                                </article>
+                                <article class="relative timelineitem">
+                                    <div class="timelinedot"></div>
+                                    <div class="ml-10 sm:ml-16 -mt-1">
+                                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                                            <div class="flex items-center gap-2">
+                                                <h3 class="text-b1 font-semibold text-base sm:text-lg">Guns.lol</h3>
+                                                <div class="cursor-pointer transition-all duration-300 transform" onclick="window.open('https://guns.lol', '_blank')">
+                                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-4 h-4 text-b1">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <span class="text-xs sm:text-sm text-d2 bg-d4 px-2 sm:px-3 py-1 rounded-full w-fit">2022 - Present</span>
+                                        </div>
+                                        <p class="text-d2 text-sm sm:text-base leading-relaxed">Guns.lol is a biolink service and image host, a platform that allows users to showcase their links and social media in one profile. I'm staff for the community server, where I help support users and the community.</p>
+                                    </div>
+                                </article>
+                                <article class="relative timelineitem">
+                                    <div class="timelinedot"></div>
+                                    <div class="ml-10 sm:ml-16 -mt-1">
+                                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                                            <h3 class="text-b1 font-semibold text-base sm:text-lg">CMAC Solutions</h3>
+                                            <span class="text-xs sm:text-sm text-d2 bg-d4 px-2 sm:px-3 py-1 rounded-full w-fit">2025 - Present</span>
+                                        </div>
+                                        <p class="text-d2 text-sm sm:text-base leading-relaxed">CMAC Solutions is a family business started in 2025 by my stepfather. The business is still in the early stages, but it's working on launching as a Home Renovation & Contracting Service, handling everything from house renovations to general maintenance. My role is the site developer, and I also manage client inquiries.</p>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </main>
+    
+    <main id="contact" class="page">
+        <div class="flex flex-col items-center justify-center px-4 sm:px-6 min-h-screen pt-24">
+            <div class="w-full max-w-xl space-y-6">
+                <article class="bg-d1/80 border border-b2 rounded-xl shadow-2xl p-4 sm:p-6 lg:p-8 text-center animate-slide">
+                    <div class="space-y-4 sm:space-y-6">
+                        <section class="bg-d1/80 border border-b2 rounded-lg p-4 sm:p-6 contactitem contacthoverbox">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3 sm:gap-5 flex-1 min-w-0">
+                                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-b1 text-d1 rounded-md flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 sm:w-7 sm:h-7" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.419-2.1568 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="text-left flex-1 min-w-0">
+                                        <h2 class="text-b1 text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Discord</h2>
+                                        <p class="text-d2 text-sm sm:text-base truncate">nskls</p>
+                                    </div>
+                                </div>
+                                <div class="cursor-pointer transition-all duration-300 transform" onclick="window.open('https://discord.com/users/1160463288002428948', '_blank')">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-b1/10">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5 sm:w-6 sm:h-6 text-b1/70">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="bg-d1/80 border border-b2 rounded-lg p-4 sm:p-6 contactitem contacthoverbox">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3 sm:gap-5 flex-1 min-w-0">
+                                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-b1 text-d1 rounded-md flex items-center justify-center flex-shrink-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="w-5 h-5 sm:w-6 sm:h-6">
+                                            <path fill="currentColor" d="M13.425 11.9q.275.2.575.2t.575-.2L21 7.425V5l-7 4.85L7 5v2.425zM3 21q-.825 0-1.412-.587T1 19V7.5q0-.425.288-.712T2 6.5t.713.288T3 7.5V19h15.5q.425 0 .713.288T19.5 20t-.288.713T18.5 21zm4-4q-.825 0-1.412-.587T5 15V5q0-.825.588-1.412T7 3h14q.825 0 1.413.588T23 5v10q0 .825-.587 1.413T21 17z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="text-left flex-1 min-w-0">
+                                        <h2 class="text-b1 text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Email</h2>
+                                        <p class="text-d2 text-sm sm:text-base truncate">9ineskulls@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="cursor-pointer transition-all duration-300 transform" onclick="window.open('mailto:9ineskulls@gmail.com', '_blank')">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full transition-all duration-300 hover:bg-b1/10">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5 sm:w-6 sm:h-6 text-b1/70">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="bg-d1/80 border border-b2 rounded-lg p-4 sm:p-6 contactitem contacthoverbox">
+                            <div class="text-center">
+                                <p class="text-d2 text-sm sm:text-base leading-relaxed mb-4 sm:mb-5">Open to discussing new opportunities and potential collaborations.</p>
+                                <div class="flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-d3">
+                                    <div class="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-c1 rounded-full animate-pulse"></div>
+                                    <span>Usually respond within 24 hours</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+    
+<script>
+const CONFIG = {
+    user: "Nineskulls",
+    url: "/api.php",
+    interval: 5000
+};
+
+class Music {
+    constructor() {
+        this.element = document.getElementById('musicdisplay');
+        this.current = null;
+        this.init();
+    }
+
+    init() {
+        this.fetch();
+        setInterval(() => this.fetch(), CONFIG.interval);
+    }
+
+    async fetch() {
+        try {
+            const response = await fetch(CONFIG.url);
+
+            if (!response.ok) throw new Error('API request failed');
+
+            const data = await response.json();
+            this.render(data);
+        } catch (error) {
+            console.error('Music fetch error:', error);
+            this.error();
+        }
+    }
+
+    render(data) {
+        if (!data.recenttracks?.track?.length) {
+            this.empty();
+            return;
+        }
+
+        const track = data.recenttracks.track[0];
+        const id = `${track.artist["#text"]}-${track.name}`;
+        
+        if (this.current === id) return;
+        
+        this.current = id;
+        const playing = track["@attr"]?.nowplaying;
+        
+        const info = {
+            artist: track.artist["#text"] || "Unknown Artist",
+            title: track.name || "Unknown Track",
+            image: this.getImage(track),
+            time: track.date ? this.formatTime(track.date.uts) : "",
+            playing
+        };
+
+        this.element.innerHTML = this.createHtml(info);
+    }
+
+    getImage(track) {
+        if (!track.image?.length) return this.defaultImage();
+        
+        const image = track.image.find(img => img.size === "large") ||
+                     track.image.find(img => img.size === "medium") ||
+                     track.image[0];
+                     
+        return image["#text"] || this.defaultImage();
+    }
+
+    defaultImage() {
+        return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTIiIGhlaWdodD0iNTIiIHZpZXdCb3g9IjAgMCA1MiA1MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUyIiBoZWlnaHQ9IjUyIiByeD0iOCIgZmlsbD0iIzBhMGEwYSIvPgo8cGF0aCBkPSJNMjAgMjBIMjdWMjdIMjBWMjBaIiBmaWxsPSIjZjFlY2M0Ii8+CjxwYXRoIGQ9Ik0yNyAyN0gzNFYzNEgyN1YyN1oiIGZpbGw9IiNmMWVjYzQiLz4KPHBhdGggZD0iTTIwIDM0SDI3VjQxSDIwVjM0WiIgZmlsbD0iI2YxZWNjNCIvPgo8L3N2Zz4K";
+    }
+
+    createHtml(info) {
+        const { artist, title, image, time, playing } = info;
+        const status = playing ? "Now Playing" : `Last Played${time ? ` ${time}` : ""}`;
+        const indicator = playing 
+            ? '<div class="flex items-center gap-1 mr-2.5"><div class="wavebar"></div><div class="wavebar"></div><div class="wavebar"></div><div class="wavebar"></div><div class="wavebar"></div></div>'
+            : '<div class="w-2 h-2 rounded-full mr-2.5 bg-b1/60"></div>';
+
+        const trackUrl = this.createUrl(artist, title, true);
+        const artistUrl = this.createUrl(artist, null, false);
+
+        return `
+            <div class="flex items-center space-x-3">
+                <img src="${image}" alt="Album Art" class="w-16 h-16 rounded-lg shadow-md object-cover">
+                <div class="flex-1 min-w-0">
+                    <h3 class="font-semibold text-b1 truncate text-base">
+                        <span class="cursor-pointer transition-all duration-300 ease-out hover:text-b1/80 transform inline-block" onclick="window.open('${trackUrl}', '_blank')">${title}</span>
+                    </h3>
+                    <p class="text-d2 text-sm truncate">
+                        by <span class="cursor-pointer transition-all duration-300 ease-out hover:text-b1/80 transform inline-block" onclick="window.open('${artistUrl}', '_blank')">${artist}</span>
+                    </p>
+                    <div class="flex items-center mt-1.5">
+                        ${indicator}
+                        <span class="text-sm text-d3">${status}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    error() {
+        this.element.innerHTML = `
+            <div class="flex items-center space-x-3">
+                <div class="w-16 h-16 bg-d4 border border-b2 rounded-lg flex items-center justify-center">
+                    <span class="text-b1 text-lg">!</span>
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-b1 text-base">Unable to load music</h3>
+                    <p class="text-d2 text-sm">Check connection</p>
+                </div>
+            </div>
+        `;
+    }
+
+    empty() {
+        this.element.innerHTML = `
+            <div class="flex items-center space-x-3">
+                <div class="w-16 h-16 bg-d4 rounded-lg flex items-center justify-center">
+                    <span class="text-b1 text-lg">♪</span>
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-b1 text-base">No recent tracks</h3>
+                    <p class="text-d2 text-sm">Start listening!</p>
+                </div>
+            </div>
+        `;
+    }
+
+    formatTime(timestamp) {
+        const date = new Date(timestamp * 1000);
+        const now = new Date();
+        const minutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
+
+        if (minutes < 1) return "Just now";
+        if (minutes < 60) return `${minutes}m ago`;
+        if (minutes < 1440) return `${Math.floor(minutes / 60)}h ago`;
+        return date.toLocaleDateString();
+    }
+
+    createUrl(artist, track, isTrack) {
+        const encodedArtist = encodeURIComponent(artist.replace(/\s+/g, '+'));
+        return isTrack 
+            ? `https://www.last.fm/music/${encodedArtist}/_/${encodeURIComponent(track.replace(/\s+/g, '+'))}`
+            : `https://www.last.fm/music/${encodedArtist}`;
+    }
+}
+</script>
+<script>
+class Entry {
+    constructor() {
+        this.element = document.getElementById('entrance');
+        this.player = document.getElementById('player');
+        this.init();
+    }
+
+    init() {
+        this.element.addEventListener('click', () => this.enter());
+    }
+
+    enter() {
+        this.element.classList.add('fadeout');
+        this.player.volume = 0.5;
+        this.player.play().catch(err => console.log('Audio play failed:', err));
+        
+        setTimeout(() => {
+            this.element.style.display = 'none';
+            document.getElementById('home').classList.remove('homenotready');
+        }, 200);
+    }
+}
+
+class Nav {
+    constructor() {
+        this.items = document.querySelectorAll('.navitem');
+        this.pages = document.querySelectorAll('.page');
+        this.indicator = document.getElementById('indicator');
+        this.init();
+    }
+
+    init() {
+        this.update();
+        
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => this.update(), 100);
+        });
+        
+        this.items.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const target = e.target.getAttribute('data-page');
+                this.switch(target);
+            });
+        });
+    }
+
+    update() {
+        const active = document.querySelector('.navitem.active');
+        if (!active || !this.indicator) return;
+
+        const rect = active.getBoundingClientRect();
+        const parent = active.parentElement.getBoundingClientRect();
+
+        this.indicator.style.width = `${rect.width}px`;
+        this.indicator.style.height = `${rect.height}px`;
+        this.indicator.style.left = `${rect.left - parent.left}px`;
+        this.indicator.style.top = '0px';
+    }
+
+    switch(target) {
+        this.items.forEach(item => item.classList.remove('active'));
+        this.pages.forEach(page => page.classList.remove('active'));
+
+        const nav = document.querySelector(`[data-page="${target}"]`);
+        const page = document.getElementById(target);
+
+        if (nav && page) {
+            nav.classList.add('active');
+            page.classList.add('active');
+            setTimeout(() => this.update(), 50);
+        }
+    }
+}
+
+class Audio {
+    constructor() {
+        this.player = document.getElementById('player');
+        this.slider = document.getElementById('slider');
+        this.icon = document.querySelector('.audioicon svg');
+        this.control = document.getElementById('icon');
+        this.muted = false;
+        this.volume = 50;
+        this.init();
+    }
+
+    init() {
+        this.slider.addEventListener('input', (e) => {
+            this.set(Number(e.target.value));
+        });
+
+        this.slider.addEventListener('change', (e) => {
+            this.updateIcon(Number(e.target.value));
+        });
+
+        this.control.addEventListener('click', () => {
+            this.toggle();
+        });
+
+        this.set(50);
+    }
+
+    set(value) {
+        this.player.volume = value / 100;
+        this.updateIcon(value);
+    }
+
+    toggle() {
+        if (this.muted) {
+            this.player.volume = this.volume / 100;
+            this.slider.value = String(this.volume);
+            this.updateIcon(this.volume);
+            this.muted = false;
+        } else {
+            this.volume = Number(this.slider.value);
+            this.player.volume = 0;
+            this.slider.value = '0';
+            this.updateIcon(0);
+            this.muted = true;
+        }
+    }
+
+    updateIcon(value) {
+        const vol = Math.floor(value);
+        let path;
+
+        if (vol === 0) {
+            path = 'M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06m7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0';
+        } else if (vol <= 25) {
+            path = 'M10.717 3.55A.5.5 0 0 1 11 4v8a.5.5 0 0 1-.812.39L7.825 10.5H5.5A.5.5 0 0 1 5 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06';
+        } else if (vol <= 75) {
+            path = 'M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12zm3.025 4a4.5 4.5 0 0 1-1.318 3.182L10 10.475A3.5 3.5 0 0 0 11.025 8 3.5 3.5 0 0 0 10 5.525l.707-.707A4.5 4.5 0 0 1 12.025 8';
+        } else {
+            path = 'M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303zm-1.415-1.414A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89zm-1.414-1.414A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06';
+        }
+
+        this.icon.innerHTML = `<path d="${path}"/>`;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new Entry();
+    new Music();
+    new Nav();
+    new Audio();
+});
+</script>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" data-cf-beacon="{" version":"2024.11.0","token":"443b73e6c4584ddda4951f15a4fc0a3f","r":1,"server_timing":{"name":{"cfcachestatus":true,"cfedge":true,"cfextpri":true,"cfl4":true,"cforigin":true,"cfspeedbrain":true},"location_startswith":null}}"="" crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98db328bbb876604',t:'MTc2MDMyMDM0NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body></html>
