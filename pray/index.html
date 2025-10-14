@@ -347,12 +347,19 @@ nav {
     border: 1px solid rgba(128, 128, 128, 0.2);
     opacity: 0;
     transform: translateY(2rem);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition: all 0.6s var(--ease);
     padding: 0 clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
+    opacity: 0;
+    transform: translateY(2rem) scale(0.95);
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 .card h2 {
@@ -1099,6 +1106,12 @@ body.light .snowflake {
                             <span id="perth-time">--:-- --</span>
                         </div>
                         
+                        <div class="item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                            </svg>
+                            <a href="mailto:me@vihar.cc">me@vihar.cc</a>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -1306,6 +1319,7 @@ body.light .snowflake {
                 </div>
             </div>
         </section>
+window.scrollTo(0, 0);
 
         <footer id="footer">
             <p>made with ❤️</p>
@@ -1508,7 +1522,16 @@ class Nav {
             }
             
             setTimeout(() => this.update(), 50);
-            setTimeout(() => {\n                if (target === 'home') {\n                    const content = document.getElementById('content');\n                    if (content) {\n                        content.scrollIntoView({ behavior: 'smooth', block: 'center' });\n                    }\n                } else {\n                    window.scrollTo({ top: 0, behavior: 'smooth' });\n                }\n            }, 200);
+            setTimeout(() => {
+                if (target === 'home') {
+                    const content = document.getElementById('content');
+                    if (content) {
+                        content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }, 200);
         }
     }
 }
