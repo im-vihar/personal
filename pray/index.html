@@ -1037,6 +1037,11 @@ body.light .snowflake {
     transform: translateY(-0.25rem);
 }
 
+.card:hover {
+    transform: translateY(-0.25rem) scale(1.02);
+    transition: transform 0.3s ease;
+}
+
 @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.5; transform: scale(1.1); }
@@ -1117,11 +1122,11 @@ body.light .snowflake {
             </article>
             <div class="container">
                 <article class="card">
-                    <h2>About</h2>
+                    <h2>about</h2>
                     <p>"Hiya! I'm Vihar, a young coder aspiring to change the world one line of code at a time. My love for code started when I was 7, I played around on scatch and loved making games just like I played them. Over the years I got more curious and started learning more about computer and code. Fast forward to today, I know over 10+ programming languages, along with many developer tools and made countless projects. I'm still thriving to learn more expand my skillset"</p>
                 </article>
                 <article class="card">
-                    <h2>Achievements</h2>
+                    <h2>achievements</h2>
                     <p>"website in design"</p>
                 </article>
             </div>
@@ -1139,7 +1144,7 @@ body.light .snowflake {
                                 <path d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 6v-.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2v.8q0 .825-.587 1.413T18 20H6q-.825 0-1.412-.587T4 18"></path>
                             </svg>
                         </div>
-                        <span>About Me</span>
+                        <span>about me</span>
                     </h2>
                     <div class="info-grid">
                         <div class="info-item"><strong>name: </strong> Vihar Modugula</div>
@@ -1158,7 +1163,7 @@ body.light .snowflake {
                                 <path d="M4.825 12.025L8.7 15.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-4.6-4.6q-.15-.15-.213-.325T2.426 12t.063-.375t.212-.325l4.6-4.6q.3-.3.713-.3t.712.3t.3.713t-.3.712zm14.35-.05L15.3 8.1q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.6 4.6q-.3.3-.7.288t-.7-.313t-.3-.712t.3-.713z"></path>
                             </svg>
                         </div>
-                        <span>Skills</span>
+                        <span>skills</span>
                     </h2>
                     <div class="skill-section">
                         <div class="skill-item">
@@ -1181,7 +1186,7 @@ body.light .snowflake {
                         </div>
                         <div class="skill-item">
                             <div class="skill-header">
-                                <span>creativity, problem solving, design</span>
+                                <span>creativity, problem solving, design, other coding</span>
                                 <span>85%</span>
                             </div>
                             <div class="skill-bar">
@@ -1228,27 +1233,25 @@ body.light .snowflake {
                     </div>
                 </div>
             </div>
-        </section>
-
+        </section>   
         <footer id="footer">
             <p>made with ❤️</p>
         </footer>
     </div>
-
     <!-- Blog Page -->
     <div class="page" id="blog">
         <section id="blog-content">
-            <h1>Blog</h1>
-            <p>Coming soon! Check back for updates on my latest thoughts and projects.</p>
+            <h1>blog</h1>
+            <p>work in progress, placeholder.</p>
             <div class="blog-post">
-                <h2>Sample Post Title</h2>
-                <p class="post-date">January 1, 2025</p>
-                <p>This is a placeholder blog post. Actual content will be added soon.</p>
+                <h2>title</h2>
+                <p class="post-date">date</p>
+                <p>this is a placeholder blog post, actual content will be added soon.</p>
             </div>
             <div class="blog-post">
-                <h2>Another Sample Post</h2>
-                <p class="post-date">February 1, 2025</p>
-                <p>More placeholder content to demonstrate the blog structure.</p>
+                <h2>another title</h2>
+                <p class="post-date">date</p>
+                <p>more placeholder content to demonstrate the blog structure.</p>
             </div>
         </section>
         <footer id="footer">
@@ -1269,7 +1272,7 @@ body.light .snowflake {
                             </svg>
                         </div>
                         <div class="contact-text">
-                            <h3>Email</h3>
+                            <h3>email</h3>
                             <p id="email-text"></p>
                         </div>
                     </div>
@@ -1287,22 +1290,22 @@ body.light .snowflake {
                                 <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"></path>
                             </svg>
                         </div>
-                        <span>Contact Form</span>
+                        <span>contact form</span>
                     </h2>
                     <form class="contact-form">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">name</label>
                             <input type="text" id="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="contact">Return Contact (optional)</label>
+                            <label for="contact">return contact (optional)</label>
                             <input type="text" id="contact" placeholder="email, phone number, etc for reply">
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
+                            <label for="message">message</label>
                             <textarea id="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit">Send</button>
+                        <button type="submit">send</button>
                     </form>
                 </div>
 
@@ -1319,8 +1322,6 @@ body.light .snowflake {
                 </div>
             </div>
         </section>
-window.scrollTo(0, 0);
-
         <footer id="footer">
             <p>made with ❤️</p>
         </footer>
@@ -1498,6 +1499,7 @@ class Nav {
 
         if (nav && page) {
             nav.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top immediately
             page.classList.add('active');
             
             // Observe portfolio and contact cards when switching pages
@@ -1523,14 +1525,7 @@ class Nav {
             
             setTimeout(() => this.update(), 50);
             setTimeout(() => {
-                if (target === 'home') {
-                    const content = document.getElementById('content');
-                    if (content) {
-                        content.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }, 200);
         }
     }
@@ -1546,17 +1541,79 @@ const emailLink = document.getElementById('email-link');
 if (emailText) emailText.innerText = email;
 if (emailLink) emailLink.href = 'mailto:' + email;
 
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const contact = document.getElementById('contact').value;
-        const message = document.getElementById('message').value;
-        const body = `Name: ${name}\nContact: ${contact}\nMessage: ${message}`;
-        window.location.href = `mailto:${email}?subject=Contact Form Submission&body=${encodeURIComponent(body)}`;
-    });
-}
+    const messageTimestamps = [];
+    const maxMessagesPerMinute = 3;
+
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        // Load saved name and contact
+        const savedName = localStorage.getItem('name') || '';
+        const savedContact = localStorage.getItem('contact') || '';
+        document.getElementById('name').value = savedName;
+        document.getElementById('contact').value = savedContact;
+
+        const statusText = document.createElement('span');
+        statusText.style.marginLeft = '10px';
+        contactForm.querySelector('button[type="submit"]').parentNode.appendChild(statusText);
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const now = Date.now();
+            const minuteAgo = now - 60000;
+            const recentMessages = messageTimestamps.filter(timestamp => timestamp > minuteAgo);
+
+            if (recentMessages.length >= maxMessagesPerMinute) {
+                e.preventDefault();
+                statusText.textContent = 'Rate limit exceeded. Please wait a minute.';
+                statusText.style.color = 'yellow';
+                return;
+            }
+
+            // Client-side message uniqueness check
+            const nameValue = document.getElementById('name').value;
+            const contactValue = document.getElementById('contact').value;
+            const messageValue = document.getElementById('message').value;
+            const currentMessage = nameValue + contactValue + messageValue;
+
+            if (sessionStorage.getItem('lastMessage') === currentMessage) {
+                e.preventDefault();
+                statusText.textContent = 'Please modify your message before sending again.';
+                statusText.style.color = 'yellow';
+                return;
+            }
+
+            messageTimestamps.push(now);
+            sessionStorage.setItem('lastMessage', currentMessage);
+
+            // Save name and contact
+            localStorage.setItem('name', nameValue);
+            localStorage.setItem('contact', contactValue);
+
+            const name = encodeURIComponent(nameValue);
+            const contact = encodeURIComponent(contactValue);
+            const message = encodeURIComponent(messageValue);
+
+            const url = `https://contactformworker.vihar2408.workers.dev/?name=${name}&contact=${contact}&message=${message}`;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                });
+
+                if (response.ok) {
+                    statusText.textContent = 'Message sent successfully!';
+                    statusText.style.color = 'green';
+                } else {
+                    statusText.textContent = 'Failed to send message. Please try again later.';
+                    statusText.style.color = 'red';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                statusText.textContent = 'An error occurred. Please try again later.';
+                statusText.style.color = 'red';
+            }
+        });
+    }
     </script>
 </body>
 </html>
